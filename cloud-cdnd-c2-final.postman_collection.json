@@ -1,13 +1,41 @@
 {
 	"info": {
-		"_postman_id": "4bcf1909-8996-44b7-be35-b130ab03d12f",
+		"_postman_id": "6d68c765-df59-4b71-b045-ba4c9d28263e",
 		"name": "cloud-cdnd-c2-final",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8082/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+			"name": "http://localhost:8082/filteredimage?image_url={{URL}} Bad Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "820ba586-b05b-4311-932a-d7e11c539eca",
+						"exec": [
+							"pm.test('should have 401 status', function(){",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"response should includes 'Failed to authenticate'\", function(){",
+							"    pm.expect(pm.response.text()).to.includes('Failed to authenticate');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "yJhbGciOiJIUzI1NiJ9.bGRrc3Fmc2RqaGZzZG1mZHNmaG1sc2RrZmpzanFkZmhzZGxta2pkc2Zsa2pkZmxrcWpzZGY.IhQLM5xxvGBTaoF-hLgAjePIBOXTVFixZTLo1wtJtkA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -24,6 +52,193 @@
 							"key": "image_url",
 							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/filteredimage?image_url={{URL}} Malformed Auth Header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "820ba586-b05b-4311-932a-d7e11c539eca",
+						"exec": [
+							"pm.test('should have 401 status', function(){",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"response should include 'No authorization token'\", function(){",
+							"    pm.expect(pm.response.text()).to.includes('Malformed token');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/filteredimage?image_url={{URL}} No Auth Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "820ba586-b05b-4311-932a-d7e11c539eca",
+						"exec": [
+							"pm.test('should have 401 status', function(){",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"response should includes 'No authorization token'\", function(){",
+							"    pm.expect(pm.response.text()).to.includes('No authorization token');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/filteredimage?image_url={{URL}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "820ba586-b05b-4311-932a-d7e11c539eca",
+						"exec": [
+							"pm.test('should have 200 status', function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response shoud be an image', function(){",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('image/jpeg')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.bGRrc3Fmc2RqaGZzZG1mZHNmaG1sc2RrZmpzanFkZmhzZGxta2pkc2Zsa2pkZmxrcWpzZGY.IhQLM5xxvGBTaoF-hLgAjePIBOXTVFixZTLo1wtJtkA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "700163b6-47db-42df-8654-e37f75a00ef7",
+						"exec": [
+							"pm.test('should have 200 status', function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response is correct', function(){",
+							"    pm.expect(pm.response.text()).to.includes('try GET /filteredimage?image_url={{}}');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}/",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						""
 					]
 				}
 			},
@@ -59,5 +274,6 @@
 			"value": "localhost:8082",
 			"type": "string"
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
