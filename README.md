@@ -39,4 +39,4 @@ You'll need to create a new node server. Open a new terminal within the project 
 
 
 ### Beanstalk URL
-> `http://image-filter-starter-code-dev.eu-west-3.elasticbeanstalk.com/`
+> `image-filter-starter-code-dev.eu-west-3.elasticbeanstalk.com`
