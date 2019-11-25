@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import {Request, Response} from 'express';
 import { filterImageFromURL, deleteLocalFiles, requireAuth } from "./util/util";
 
 (async () => {
@@ -26,7 +27,7 @@ import { filterImageFromURL, deleteLocalFiles, requireAuth } from "./util/util";
   // RETURNS
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
-  app.get("/filteredimage", requireAuth, async (req, res) => {
+  app.get("/filteredimage", requireAuth, async (req:Request, res:Response) => {
     try {
       const { image_url } = req.query;
       //  1. Validation of the image_url query
@@ -55,7 +56,7 @@ import { filterImageFromURL, deleteLocalFiles, requireAuth } from "./util/util";
 
   // Root Endpoint
   // Displays a simple message to the user
-  app.get("/", async (req, res) => {
+  app.get("/", async (req: Request, res: Response) => {
     res.send("try GET /filteredimage?image_url={{}}");
   });
 

@@ -269,9 +269,9 @@
 	],
 	"variable": [
 		{
-			"id": "1df3d31a-de30-494b-a3d0-f1228dd8713c",
+			"id": "a857fdad-a60d-49f7-a535-2e6494e868c9",
 			"key": "HOST",
-			"value": "http://image-filter-starter-code-dev.eu-west-3.elasticbeanstalk.com/",
+			"value": "image-filter-starter-code-dev.eu-west-3.elasticbeanstalk.com",
 			"type": "string"
 		}
 	],
