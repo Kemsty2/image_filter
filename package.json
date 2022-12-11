@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.3.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jimp": "^0.6.4",
     "jsonwebtoken": "^8.5.1"
   }
